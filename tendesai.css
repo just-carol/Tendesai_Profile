@@ -1,0 +1,146 @@
+/* ---------- Base ---------- */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: #f4f7f6;
+    color: #20302b;
+    line-height: 1.5;
+}
+
+/* ---------- Header ---------- */
+.profile-header {
+    position: relative;
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: #d8eee5;
+}
+
+.profile-picture {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    object-position: center 25%;
+    border-radius: 50%;
+}
+
+.profile-header h1 {
+    margin: 0 0 0.25rem;
+}
+
+.tagline {
+    margin: 0 0 1rem;
+    color: #176b4d;
+}
+
+nav a {
+    margin: 0 0.75rem;
+    color: #176b4d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover,
+nav a:focus {
+    text-decoration: underline;
+}
+
+/* Visible keyboard focus for accessibility */
+a:focus,
+input:focus,
+textarea:focus,
+button:focus {
+    outline: 3px solid #2d9b70;
+    outline-offset: 2px;
+}
+
+/* ---------- Sections ---------- */
+.profile-section {
+    max-width: 650px;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-left: 5px solid #2d9b70;
+    box-shadow: 0 3px 12px rgba(32, 48, 43, 0.12);
+}
+
+.profile-section h2 {
+    margin-top: 0;
+    color: #176b4d;
+}
+
+.profile-section ul {
+    padding-left: 1.25rem;
+}
+
+/* ---------- Form ---------- */
+.form-row {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row label {
+    font-weight: bold;
+    margin-bottom: 0.35rem;
+}
+
+.form-row input,
+.form-row textarea {
+    font: inherit;
+    padding: 0.6rem;
+    border: 1px solid #9fbfb2;
+    border-radius: 4px;
+    color: #20302b;
+}
+
+/* Fix for peer-reviewed contrast issue: default browser placeholder text
+   was too light against the white input background. This darker grey
+   meets WCAG AA contrast (4.5:1) against white. */
+.form-row input::placeholder,
+.form-row textarea::placeholder {
+    color: #5a6b64;
+    opacity: 1;
+}
+
+button[type="submit"] {
+    background-color: #176b4d;
+    color: #ffffff;
+    border: none;
+    padding: 0.7rem 1.4rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #2d9b70;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    color: #4b5f57;
+    font-size: 0.9rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+    .profile-header {
+        padding: 1.5rem 0.75rem;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 0.25rem 0.5rem;
+    }
+
+    .profile-section {
+        margin: 1rem 0.75rem;
+        padding: 1.25rem;
+    }
+}
