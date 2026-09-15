@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal profile and mini-portfolio page for Tendesai Muyambo, a Computer Information Systems student.">
+    <title>Tendesai Muyambo — Profile</title>
+    <link rel="stylesheet" href="tendesai.css">
+</head>
+<body>
+
+    <header class="profile-header">
+        <h1>Tendesai Muyambo</h1>
+        <p class="tagline">CIS student who likes making software work well and feel good to use.</p>
+        <nav aria-label="Page sections">
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="profile-section">
+            <h2>About Me</h2>
+            <!--
+                
+            -->
+            <p>
+                I'm a second-year Computer Information Systems student with an interest in
+                how software gets designed and built end to end — from the interface someone
+                actually touches, down to the systems running underneath it. I'm currently
+                working through the Web Technologies unit, learning to build accessible,
+                well-structured pages before layering on frameworks and styling tools.
+            </p>
+        </section>
+
+        <article id="skills" class="profile-section">
+            <h2>Skills &amp; Interests</h2>
+            
+            <ul>
+                <li>HTML5 &amp; semantic markup</li>
+                <li>CSS3 fundamentals</li>
+                <li>Learning Git &amp; GitHub for version control</li>
+                <li>Interested in UI/UX design and AI-assisted development</li>
+            </ul>
+        </article>
+
+        <section id="contact" class="profile-section">
+            <h2>Contact Me</h2>
+            <p>
+                Email: <a href="mailto:muyambot@africau.edu">muyambot@africau.edu</a><br>
+                Phone: <a href="tel:+263771148032">0771 148 032</a>
+            </p>
+            <form action="#" method="post" novalidate>
+                <div class="form-row">
+                    <label for="name">Full name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        minlength="2"
+                        placeholder="Your full name">
+                </div>
+
+                <div class="form-row">
+                    <label for="email">Email address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        placeholder="you@example.com">
+                </div>
+
+                <div class="form-row">
+                    <label for="phone">Phone number</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        pattern="[0-9+ ]{7,15}"
+                        placeholder="e.g. +263 771 234 567"
+                        title="Enter 7–15 digits, spaces and + allowed">
+                </div>
+
+                <div class="form-row">
+                    <label for="message">Message</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="5"
+                        required
+                        minlength="10"
+                        placeholder="Write your message here..."></textarea>
+                </div>
+
+                <button type="submit">Send message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tendesai Muyambo. Built for CIS2103 — Web Technologies.</p>
+    </footer>
+
+</body>
+</html>
