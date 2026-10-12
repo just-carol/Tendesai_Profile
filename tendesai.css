@@ -1,50 +1,56 @@
-/* ---------- Base ---------- */
+/* =====================================================================
+   tendesai.css — Assignment 2 (responsive styling)
+   Mobile-first: the base rules below target ~375px phones. Larger
+   screens are layered on at the bottom with min-width media queries.
+   ===================================================================== */
+
+/* ---------- Design tokens ---------- */
+:root {
+    /* Colour (palette from Assignment 1) */
+    --color-bg: #f4f7f6;
+    --color-surface: #ffffff;
+    --color-ink: #20302b;
+    --color-muted: #4b5f57;
+    --color-brand-dark: #176b4d;
+    --color-brand: #2d9b70;
+    --color-brand-light: #d8eee5;
+    --color-border: #9fbfb2;
+
+    /* Type scale (mobile sizes; bumped up in the media queries) */
+    --text-base: 1rem;
+    --text-h2: 1.35rem;
+    --text-small: 0.9rem;
+
+    /* Spacing scale: every margin/padding uses one of these steps */
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+}
+
+/* ---------- Base / box model ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* padding and border never widen an element */
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
+    font-size: var(--text-base);
     margin: 0;
-    background-color: #f4f7f6;
-    color: #20302b;
+    background-color: var(--color-bg);
+    color: var(--color-ink);
     line-height: 1.5;
 }
 
-/* ---------- Header ---------- */
-.profile-header {
-    position: relative;
-    padding: 2rem 1rem;
-    text-align: center;
-    background-color: #d8eee5;
+img {
+    max-width: 100%;
+    height: auto;
 }
 
-.profile-picture {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    object-position: center 25%;
-    border-radius: 50%;
-}
-
-.profile-header h1 {
-    margin: 0 0 0.25rem;
-}
-
-.tagline {
-    margin: 0 0 1rem;
-    color: #176b4d;
-}
-
-nav a {
-    margin: 0 0.75rem;
-    color: #176b4d;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover,
-nav a:focus {
-    text-decoration: underline;
+a {
+    overflow-wrap: anywhere; /* long links/emails wrap instead of overflowing */
 }
 
 /* Visible keyboard focus for accessibility */
@@ -52,95 +58,88 @@ a:focus,
 input:focus,
 textarea:focus,
 button:focus {
-    outline: 3px solid #2d9b70;
+    outline: 3px solid var(--color-brand);
     outline-offset: 2px;
 }
 
 /* ---------- Sections ---------- */
 .profile-section {
-    max-width: 650px;
-    margin: 1.5rem auto;
-    padding: 1.5rem;
-    background-color: #ffffff;
-    border-left: 5px solid #2d9b70;
+    margin: var(--space-2) 0.75rem;
+    padding: var(--space-2) 1.25rem var(--space-3);
+    background-color: var(--color-surface);
+    border-left: 5px solid var(--color-brand);
     box-shadow: 0 3px 12px rgba(32, 48, 43, 0.12);
 }
 
 .profile-section h2 {
-    margin-top: 0;
-    color: #176b4d;
+    margin: 0 0 var(--space-2);
+    font-size: var(--text-h2);
+    color: var(--color-brand-dark);
 }
 
-.profile-section ul {
-    padding-left: 1.25rem;
+/* Tailwind's reset strips default link styling, so restore a clear,
+   underlined link style for links inside the content sections. */
+.profile-section a {
+    color: var(--color-brand-dark);
+    text-decoration: underline;
 }
 
-/* ---------- Form ---------- */
-.form-row {
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column;
+/* ---------- Skills (CSS Grid) ---------- */
+/* Grid, not Flexbox, because the cards form a two-dimensional layout:
+   auto-fit + minmax() lets the browser decide how many equal columns fit,
+   so the same rule gives 1 column on phones and more on wider screens. */
+.skills-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: var(--space-2);
 }
 
-.form-row label {
-    font-weight: bold;
-    margin-bottom: 0.35rem;
-}
-
-.form-row input,
-.form-row textarea {
-    font: inherit;
-    padding: 0.6rem;
-    border: 1px solid #9fbfb2;
-    border-radius: 4px;
-    color: #20302b;
-}
-
-/* Fix for peer-reviewed contrast issue: default browser placeholder text
-   was too light against the white input background. This darker grey
-   meets WCAG AA contrast (4.5:1) against white. */
-.form-row input::placeholder,
-.form-row textarea::placeholder {
-    color: #5a6b64;
-    opacity: 1;
-}
-
-button[type="submit"] {
-    background-color: #176b4d;
-    color: #ffffff;
-    border: none;
-    padding: 0.7rem 1.4rem;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-button[type="submit"]:hover {
-    background-color: #2d9b70;
+.skills-list li {
+    padding: var(--space-2);
+    background-color: var(--color-brand-light);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
 }
 
 /* ---------- Footer ---------- */
 footer {
     text-align: center;
-    padding: 1.5rem 1rem;
-    color: #4b5f57;
-    font-size: 0.9rem;
+    padding: var(--space-3) var(--space-2);
+    color: var(--color-muted);
+    font-size: var(--text-small);
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 480px) {
-    .profile-header {
-        padding: 1.5rem 0.75rem;
-    }
+/* =====================================================================
+   Responsive layers — min-width only (mobile-first)
+   ===================================================================== */
 
-    nav a {
-        display: inline-block;
-        margin: 0.25rem 0.5rem;
+/* Tablet and up (>= 768px): more room, so widen sections and scale type */
+@media (min-width: 768px) {
+    :root {
+        --text-base: 1.0625rem;
+        --text-h2: 1.6rem;
     }
 
     .profile-section {
-        margin: 1rem 0.75rem;
-        padding: 1.25rem;
+        max-width: 720px;
+        margin: var(--space-3) auto;
+        padding: var(--space-3) var(--space-4) var(--space-4);
     }
 }
+
+/* Desktop (>= 1280px): widest layout, capped so line length stays readable */
+@media (min-width: 1280px) {
+    :root {
+        --text-base: 1.125rem;
+        --text-h2: 1.75rem;
+    }
+
+    .profile-section {
+        max-width: 880px;
+        margin: var(--space-4) auto;
+    }
+}
+
