@@ -5,22 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal profile and mini-portfolio page for Tendesai Muyambo, a Computer Information Systems student.">
     <title>Tendesai Muyambo — Profile</title>
+    <!-- Tailwind (Play CDN, no build step) for the header/nav and contact form;
+         tendesai.css keeps the page-level styles, sections and skills grid. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="tendesai.css">
 </head>
 <body>
 
-    <header class="profile-header">
+    <!-- Header + nav: Tailwind utilities. Flexbox stacks the picture and text in a
+         column on phones (flex-col) and puts them side by side from 768px (md:flex-row). -->
+    <header class="flex flex-col items-center gap-4 bg-[#d8eee5] px-4 py-8 text-center md:flex-row md:gap-8 md:px-10 md:py-10 md:text-left lg:px-16">
         <img
             src="profile-picture.jpg.jpg"
             alt="Profile picture of Tendesai Muyambo"
-            class="profile-picture">
-        <h1>Tendesai Muyambo</h1>
-        <p class="tagline">CIS student who likes making software work well and feel good to use.</p>
-        <nav aria-label="Page sections">
-            <a href="#about">About Me</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-        </nav>
+            class="h-28 w-28 shrink-0 rounded-full object-cover object-[center_25%] md:h-36 md:w-36">
+        <div>
+            <h1 class="mb-1 text-3xl leading-tight font-bold md:text-4xl lg:text-5xl">Tendesai Muyambo</h1>
+            <p class="mb-4 text-[#176b4d]">CIS student who likes making software work well and feel good to use.</p>
+            <nav aria-label="Page sections" class="flex flex-wrap justify-center gap-x-5 gap-y-2 md:justify-start">
+                <a href="#about" class="py-1 font-bold text-[#176b4d] no-underline hover:underline focus:underline">About Me</a>
+                <a href="#skills" class="py-1 font-bold text-[#176b4d] no-underline hover:underline focus:underline">Skills</a>
+                <a href="#contact" class="py-1 font-bold text-[#176b4d] no-underline hover:underline focus:underline">Contact</a>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -38,7 +45,7 @@
         <article id="skills" class="profile-section">
             <h2>Skills &amp; Interests</h2>
             
-            <ul>
+            <ul class="skills-list">
                 <li>HTML5 &amp; semantic markup</li>
                 <li>CSS3 fundamentals</li>
                 <li>Learning Git &amp; GitHub for version control</li>
@@ -48,55 +55,68 @@
 
         <section id="contact" class="profile-section">
             <h2>Contact Me</h2>
-            <p>
+            <p class="mb-4">
                 Email: <a href="mailto:muyambot@africau.edu">muyambot@africau.edu</a><br>
                 Phone: <a href="tel:+263771148032">0771 148 032</a>
             </p>
-            <form action="#" method="post" novalidate>
-                <div class="form-row">
-                    <label for="name">Full name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        minlength="2"
-                        placeholder="Your full name">
+            <!-- Contact form: Tailwind utilities. Flexbox column for every field group;
+                 name + email sit side by side from 768px (md:flex-row). The darker
+                 placeholder colour is the contrast fix from Assignment 1 (#5a6b64, WCAG AA). -->
+            <form action="#" method="post" novalidate class="flex flex-col gap-4">
+                <div class="flex flex-col gap-4 md:flex-row">
+                    <div class="flex flex-1 flex-col gap-1.5">
+                        <label for="name" class="font-bold">Full name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            minlength="2"
+                            placeholder="Your full name"
+                            class="rounded border border-[#9fbfb2] p-2.5 text-base text-[#20302b] placeholder:text-[#5a6b64] placeholder:opacity-100">
+                    </div>
+
+                    <div class="flex flex-1 flex-col gap-1.5">
+                        <label for="email" class="font-bold">Email address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            placeholder="you@example.com"
+                            class="rounded border border-[#9fbfb2] p-2.5 text-base text-[#20302b] placeholder:text-[#5a6b64] placeholder:opacity-100">
+                    </div>
                 </div>
 
-                <div class="form-row">
-                    <label for="email">Email address</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        placeholder="you@example.com">
-                </div>
-
-                <div class="form-row">
-                    <label for="phone">Phone number</label>
+                <div class="flex flex-col gap-1.5">
+                    <label for="phone" class="font-bold">Phone number</label>
                     <input
                         type="tel"
                         id="phone"
                         name="phone"
                         pattern="[0-9+ ]{7,15}"
                         placeholder="e.g. +263 771 234 567"
-                        title="Enter 7–15 digits, spaces and + allowed">
+                        title="Enter 7–15 digits, spaces and + allowed"
+                        class="rounded border border-[#9fbfb2] p-2.5 text-base text-[#20302b] placeholder:text-[#5a6b64] placeholder:opacity-100">
                 </div>
 
-                <div class="form-row">
-                    <label for="message">Message</label>
+                <div class="flex flex-col gap-1.5">
+                    <label for="message" class="font-bold">Message</label>
                     <textarea
                         id="message"
                         name="message"
                         rows="5"
                         required
                         minlength="10"
-                        placeholder="Write your message here..."></textarea>
+                        placeholder="Write your message here..."
+                        class="resize-y rounded border border-[#9fbfb2] p-2.5 text-base text-[#20302b] placeholder:text-[#5a6b64] placeholder:opacity-100"></textarea>
                 </div>
 
-                <button type="submit">Send message</button>
+                <button
+                    type="submit"
+                    class="w-full cursor-pointer rounded bg-[#176b4d] px-5 py-3 text-base font-bold text-white hover:bg-[#0f5239] sm:w-auto sm:self-start">
+                    Send message
+                </button>
             </form>
         </section>
     </main>
